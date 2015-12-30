@@ -1,0 +1,3 @@
+include ':teaspoon', ':teaspoon-annotations', ':teaspoon-compiler'
+
+rootProject.name = 'teaspoon-parent'

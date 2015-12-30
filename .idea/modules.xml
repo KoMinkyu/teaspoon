@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/teaspoon/teaspoon.iml" filepath="$PROJECT_DIR$/teaspoon/teaspoon.iml" />
+      <module fileurl="file://$PROJECT_DIR$/teaspoon-annotations/teaspoon-annotations.iml" filepath="$PROJECT_DIR$/teaspoon-annotations/teaspoon-annotations.iml" />
+      <module fileurl="file://$PROJECT_DIR$/teaspoon-compiler/teaspoon-compiler.iml" filepath="$PROJECT_DIR$/teaspoon-compiler/teaspoon-compiler.iml" />
+      <module fileurl="file://$PROJECT_DIR$/teaspoon-parent.iml" filepath="$PROJECT_DIR$/teaspoon-parent.iml" />
+    </modules>
+  </component>
+</project>
