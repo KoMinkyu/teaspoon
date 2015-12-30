@@ -16,7 +16,7 @@ import javax.lang.model.util.Elements;
 import javax.lang.model.util.Types;
 
 import teaspoon.annotations.OnBackground;
-import teaspoon.annotations.OnMain;
+import teaspoon.annotations.OnUi;
 
 @AutoService(Processor.class)
 public class TeaSpoonProcessor extends AbstractProcessor{
@@ -36,7 +36,7 @@ public class TeaSpoonProcessor extends AbstractProcessor{
     @Override public Set<String> getSupportedAnnotationTypes() {
         final Set<String> annotationTypes = new LinkedHashSet<>();
 
-        annotationTypes.add(OnMain.class.getCanonicalName());
+        annotationTypes.add(OnUi.class.getCanonicalName());
         annotationTypes.add(OnBackground.class.getCanonicalName());
 
         return annotationTypes;
@@ -48,7 +48,7 @@ public class TeaSpoonProcessor extends AbstractProcessor{
     }
 
     private void findAndParseTargets(RoundEnvironment env) {
-        for (Element element : env.getElementsAnnotatedWith(OnMain.class)) {
+        for (Element element : env.getElementsAnnotatedWith(OnUi.class)) {
 
         }
     }

@@ -6,6 +6,6 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.CLASS) @Target(ElementType.METHOD)
-public @interface OnMain {
+public @interface OnUi {
     int delay() default 0;
 }
