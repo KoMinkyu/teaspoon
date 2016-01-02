@@ -1,4 +1,5 @@
 apply plugin: 'groovy'
+apply plugin: 'com.github.dcendents.android-maven'
 
 targetCompatibility = rootProject.ext.targetCompatibilityVersion
 sourceCompatibility = rootProject.ext.sourceCompatibilityVersion
