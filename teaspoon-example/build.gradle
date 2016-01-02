@@ -4,6 +4,7 @@ buildscript {
     }
 
     dependencies {
+        classpath ":teaspoon-plugin:0.0.1"
     }
 }
 
