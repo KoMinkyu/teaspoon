@@ -1,5 +1,5 @@
 # TeaSpoon
-Thread switching library for Android.
+Effective thread binding library for Android.
 
 License
 -------
