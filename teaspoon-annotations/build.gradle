@@ -10,13 +10,3 @@ for (File file : sdkHandler.sdkLoader.repositories) {
 
 targetCompatibility = JavaVersion.VERSION_1_7
 sourceCompatibility = JavaVersion.VERSION_1_7
-
-configurations {
-    provided
-    compile.extendsFrom provided
-}
-
-dependencies {
-    provided deps.android
-    compile deps.supportAnnotations
-}

@@ -4,8 +4,11 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/teaspoon/teaspoon.iml" filepath="$PROJECT_DIR$/teaspoon/teaspoon.iml" />
       <module fileurl="file://$PROJECT_DIR$/teaspoon-annotations/teaspoon-annotations.iml" filepath="$PROJECT_DIR$/teaspoon-annotations/teaspoon-annotations.iml" />
-      <module fileurl="file://$PROJECT_DIR$/teaspoon-compiler/teaspoon-compiler.iml" filepath="$PROJECT_DIR$/teaspoon-compiler/teaspoon-compiler.iml" />
+      <module fileurl="file://$PROJECT_DIR$/teaspoon-example/teaspoon-example.iml" filepath="$PROJECT_DIR$/teaspoon-example/teaspoon-example.iml" />
       <module fileurl="file://$PROJECT_DIR$/teaspoon-parent.iml" filepath="$PROJECT_DIR$/teaspoon-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/teaspoon-plugin/teaspoon-plugin.iml" filepath="$PROJECT_DIR$/teaspoon-plugin/teaspoon-plugin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/teaspoon-plugin/teaspoon-plugin.iml" filepath="$PROJECT_DIR$/teaspoon-plugin/teaspoon-plugin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/teaspoon-processor/teaspoon-processor.iml" filepath="$PROJECT_DIR$/teaspoon-processor/teaspoon-processor.iml" />
     </modules>
   </component>
 </project>
