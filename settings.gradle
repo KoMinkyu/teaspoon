@@ -1,3 +1,7 @@
-include ':teaspoon', ':teaspoon-annotations', ':teaspoon-compiler'
+include ':teaspoon'
+include ':teaspoon-processor'
+include ':teaspoon-annotations'
+include ':teaspoon-plugin'
+include ':teaspoon-example'
 
 rootProject.name = 'teaspoon-parent'

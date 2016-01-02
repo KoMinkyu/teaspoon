@@ -18,8 +18,6 @@ android {
 
 dependencies {
     compile project(':teaspoon-annotations')
-    compile deps.supportAnnotations
-    provided deps.supportv4
 
     testCompile deps.junit
 }
