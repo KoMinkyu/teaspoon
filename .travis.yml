@@ -12,4 +12,4 @@ android:
     - tools
 
 script:
- - ./gradlew clean build
+ - ./gradlew clean build --info
