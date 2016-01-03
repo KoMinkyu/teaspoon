@@ -6,7 +6,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 
 dependencies {
-    compile 'org.aspectj:aspectjrt:1.8.6'
+    compile deps.aspectjrt
     compile project(':teaspoon-annotations')
 
     testCompile deps.junit

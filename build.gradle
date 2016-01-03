@@ -8,7 +8,6 @@ subprojects { project ->
 
     buildscript {
         repositories {
-            mavenCentral()
             maven { url "https://plugins.gradle.org/m2/" }
         }
         dependencies {
@@ -30,6 +29,9 @@ ext {
 }
 
 ext.deps = [
+    aspectjrt: 'org.aspectj:aspectjrt:1.8.6',
+    aspectjtools: 'org.aspectj:aspectjtools:1.8.6',
+
     junit: 'junit:junit:4.12',
 ]
 

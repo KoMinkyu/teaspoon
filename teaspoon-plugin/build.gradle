@@ -8,6 +8,6 @@ dependencies {
   compile gradleApi()
   compile localGroovy()
   compile 'com.android.tools.build:gradle:1.5.0'
-  compile 'org.aspectj:aspectjtools:1.8.6'
-  compile 'org.aspectj:aspectjrt:1.8.6'
+  compile deps.aspectjtools
+  compile deps.aspectjrt
 }
