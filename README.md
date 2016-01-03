@@ -8,7 +8,6 @@ Annotation-triggered method call by specified thread.
 It makes more clear and easy to execute your method in `ui thread` or `background thread`.
 
 ``` java
-// Callback that execute on background thread.
 class BackgroundCallback extends Callback {
 	@Override public void success(Object object, Response response) {
 		showSuccessView();
@@ -16,6 +15,7 @@ class BackgroundCallback extends Callback {
 
 	@Override public void failure(RetrofitError error) {
 		showFailureView();
+		saveLogOnDevice();
 	}
 }
 
@@ -25,6 +25,10 @@ class BackgroundCallback extends Callback {
 
 @OnUi public void showFailureView() {
 	failureView.setVisibility(View.VISIBLE);
+}
+
+@OnBackground public void saveLogOnDevice() {
+	// File IO or some background thread required work
 }
 ```
 
