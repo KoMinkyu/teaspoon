@@ -1,5 +1,51 @@
-# TeaSpoon
-Effective thread binding library for Android.
+TeaSpoon
+========
+
+Annotation-triggered method call by specified thread.
+* Eliminate `runOnUiThread` calls by using `@OnUi` on method.
+* Make background logic more clear by using `@OnBackground` on method.
+
+It makes more clear and easy to execute your method in `ui thread` or `background thread`.
+
+``` java
+// Callback that execute on background thread.
+class BackgroundCallback extends Callback {
+	@Override public void success(Object object, Response response) {
+		showSuccessView();
+	}
+
+	@Override public void failure(RetrofitError error) {
+		showFailureView();
+	}
+}
+
+@OnUi public void showSuccessView() {
+	successView.setVisibility(View.VISIBLE);
+}
+
+@OnUi public void showFailureView() {
+	failureView.setVisibility(View.VISIBLE);
+}
+```
+
+Download
+--------
+
+on Gradle:
+```groovy
+buildscript {
+  repositories {
+    maven { url "https://jitpack.io" }
+  }
+
+  dependencies {
+    classpath 'com.github.KoMinkyu.TeaSpoon:teaspoon-plugin:0.2.1'
+  }
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'teaspoon'
+```
 
 License
 -------
