@@ -2,6 +2,9 @@ package teaspoon.plugin
 
 import com.android.build.gradle.AppPlugin
 import com.android.build.gradle.LibraryPlugin
+import org.aspectj.bridge.IMessage
+import org.aspectj.bridge.MessageHandler
+import org.aspectj.tools.ajc.Main
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.tasks.compile.JavaCompile
@@ -15,6 +18,7 @@ class TeaSpoonPlugin implements Plugin<Project> {
             throw new IllegalStateException("'android' or 'android-library' plugin required.")
         }
 
+        final def log = project.logger
         final def variants
         if (hasApp) {
             variants = project.android.applicationVariants
@@ -23,9 +27,10 @@ class TeaSpoonPlugin implements Plugin<Project> {
         }
 
         project.dependencies {
-            compile project(':teaspoon-processor')
+            compile 'com.github.KoMinkyu.TeaSpoon:teaspoon:0.1.1-alpha'
+            compile 'com.github.KoMinkyu.TeaSpoon:teaspoon-processor:0.1.1-alpha'
             compile 'org.aspectj:aspectjrt:1.8.6'
-            compile project(':teaspoon-annotations')
+            compile 'com.github.KoMinkyu.TeaSpoon:teaspoon-annotations:0.1.1-alpha'
         }
 
         variants.all { variant ->
@@ -41,7 +46,28 @@ class TeaSpoonPlugin implements Plugin<Project> {
                         "-classpath", javaCompile.classpath.asPath,
                         "-bootclasspath", project.android.bootClasspath.join(File.pathSeparator)
                 ]
+                log.debug "ajc args: " + Arrays.toString(args)
 
+                MessageHandler handler = new MessageHandler(true);
+                new Main().run(args, handler);
+                for (IMessage message : handler.getMessages(null, true)) {
+                    switch (message.getKind()) {
+                        case IMessage.ABORT:
+                        case IMessage.ERROR:
+                        case IMessage.FAIL:
+                            log.error message.message, message.thrown
+                            break;
+                        case IMessage.WARNING:
+                            log.warn message.message, message.thrown
+                            break;
+                        case IMessage.INFO:
+                            log.info message.message, message.thrown
+                            break;
+                        case IMessage.DEBUG:
+                            log.debug message.message, message.thrown
+                            break;
+                    }
+                }
             }
         }
     }

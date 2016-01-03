@@ -25,7 +25,7 @@ public class TeaSpoonProcessor {
         return result;
     }
 
-    @Around("methodWithOnUiAnnotation")
+    @Around("methodWithOnUiAnnotation()")
     public Object methodWithOnUiAnnotation(ProceedingJoinPoint joinPoint) throws Throwable {
         Log.i("TAG", "background method!!");
         Object result = joinPoint.proceed();
