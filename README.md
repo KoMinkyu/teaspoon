@@ -47,6 +47,16 @@ apply plugin: 'com.android.application'
 apply plugin: 'teaspoon'
 ```
 
+Local Development
+-----------------
+
+Working on this project? Here's some helpful Gradle tasks:
+
+ * `install` - Install plugin, runtime, and annotations into local repo.
+ * `cleanExample` - Clean the example project build.
+ * `assembleExample` - Build the example project. Must run `install` first.
+ * `installExample` - Build and install the example project debug APK onto a device.
+
 License
 -------
 
