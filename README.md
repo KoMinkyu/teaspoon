@@ -5,6 +5,8 @@ TeaSpoon
 [![license](https://img.shields.io/hexpm/l/plug.svg)](LICENSE)
 [![productiveLevel](https://img.shields.io/badge/productiveLevel-non--productive-red.svg)](https://img.shields.io/badge/productiveLevel-non--productive-red.svg)
 
+[![travis](https://api.travis-ci.org/KoMinkyu/TeaSpoon.svg)](https://travis-ci.org/KoMinkyu/TeaSpoon)
+
 **This library is non-productive!**
 
 Annotation-triggered method call by specified thread.
