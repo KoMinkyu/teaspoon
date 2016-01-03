@@ -1,5 +1,6 @@
 TeaSpoon
 ========
+**This library is non-productive!**
 
 Annotation-triggered method call by specified thread.
 * Eliminate `runOnUiThread` calls by using `@OnUi` on method.
