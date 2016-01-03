@@ -3,7 +3,7 @@ TeaSpoon
 
 [![jitpack](https://img.shields.io/badge/jitpack%20maven-v0.2.1-blue.svg)](https://img.shields.io/badge/jitpack%20maven-0.2.1-blue.svg)
 [![license](https://img.shields.io/hexpm/l/plug.svg)](LICENSE)
-[![productiveLevel](https://img.shields.io/badge/droductiveLevel-non--productive-red.svg)](https://img.shields.io/badge/droductiveLevel-non--productive-red.svg)
+[![productiveLevel](https://img.shields.io/badge/productiveLevel-non--productive-red.svg)](https://img.shields.io/badge/productiveLevel-non--productive-red.svg)
 
 **This library is non-productive!**
 
