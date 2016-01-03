@@ -30,14 +30,23 @@ ext {
 }
 
 ext.deps = [
-    android: 'com.google.android:android:2.1.2',
-    supportv4: 'com.android.support:support-v4:23.0.1',
-
     junit: 'junit:junit:4.12',
 ]
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
+task cleanExample(type: Exec) {
+    executable = '../gradlew'
+    workingDir = project.file('teaspoon-example')
+    args = [ 'clean' ]
 }
 
+task assembleExample(type: Exec) {
+    executable = '../gradlew'
+    workingDir = project.file('teaspoon-example')
+    args = [ 'assemble' ]
+}
 
+task installExample(type: Exec) {
+    executable = '../gradlew'
+    workingDir = project.file('teaspoon-example')
+    args = [ 'installDebug' ]
+}

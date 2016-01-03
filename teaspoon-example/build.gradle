@@ -1,17 +1,28 @@
 buildscript {
     repositories {
         mavenCentral()
+        maven {
+            url System.getenv('HOME') + "/.m2/repository/"
+        }
     }
 
     dependencies {
+        classpath 'com.android.tools.build:gradle:1.3.1'
+        classpath 'com.github.KoMinkyu.TeaSpoon:teaspoon-plugin:0.1.1-alpha'
     }
 }
 
 apply plugin: 'com.android.application'
+apply plugin: 'teaspoon'
 
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.2"
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
 
     defaultConfig {
         applicationId "com.example.teaspoon"
@@ -20,16 +31,21 @@ android {
         versionCode 1
         versionName "1.0"
     }
+
     buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        dev {
+            applicationIdSuffix '.dev'
         }
     }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.1.1'
+  repositories {
+    mavenCentral()
+    maven {
+        url System.getenv('HOME') + "/.m2/repository/"
+    }
+  }
+
+  compile 'com.android.support:appcompat-v7:23.1.1'
 }
