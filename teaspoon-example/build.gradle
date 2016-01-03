@@ -1,18 +1,31 @@
 buildscript {
-    repositories {
-        mavenCentral()
-        maven { url System.getenv('HOME') + "/.m2/repository/" }
-        maven { url "https://jitpack.io" }
-    }
-
     dependencies {
+        repositories {
+            mavenCentral()
+            maven { url "https://jitpack.io" }
+
+            // NOTE: This is only needed when developing the plugin!
+            maven { url System.getenv('HOME') + "/.m2/repository/" }
+        }
         classpath 'com.android.tools.build:gradle:1.3.1'
-        classpath 'com.github.KoMinkyu.TeaSpoon:teaspoon-plugin:0.2.1'
+        classpath 'com.github.KoMinkyu.TeaSpoon:teaspoon-plugin:0.3.0'
     }
 }
 
 apply plugin: 'com.android.application'
 apply plugin: 'teaspoon'
+
+dependencies {
+    repositories {
+        mavenCentral()
+        maven { url "https://jitpack.io" }
+
+        // NOTE: This is only needed when developing the plugin!
+        maven { url System.getenv('HOME') + "/.m2/repository/" }
+    }
+
+    compile 'com.android.support:appcompat-v7:23.1.1'
+}
 
 android {
     compileSdkVersion 23
@@ -36,15 +49,4 @@ android {
             applicationIdSuffix '.dev'
         }
     }
-}
-
-dependencies {
-  repositories {
-    mavenCentral()
-    maven {
-        url System.getenv('HOME') + "/.m2/repository/"
-    }
-  }
-
-  compile 'com.android.support:appcompat-v7:23.1.1'
 }

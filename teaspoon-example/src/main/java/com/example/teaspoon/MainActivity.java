@@ -29,14 +29,14 @@ public class MainActivity extends Activity implements View.OnClickListener {
         btnSleepOnUi.setOnClickListener(this);
     }
 
-    @OnBackground private void sleepOnBackgroundThread() {
+    @OnBackground void sleepOnBackgroundThread() {
         SystemClock.sleep(5000);
     }
 
-    @OnUi private void sleepOnUiThread() {
+    @OnUi void sleepOnUiThread() {
         SystemClock.sleep(5000);
     }
-
+    
     @Override public void onClick(View v) {
         final int id = v.getId();
 
