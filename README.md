@@ -1,5 +1,6 @@
 TeaSpoon
 ========
+[![jitpack](https://img.shields.io/badge/jitpack%20maven-0.2.1-blue.svg)](https://img.shields.io/badge/jitpack%20maven-0.2.1-blue.svg)
 **This library is non-productive!**
 
 Annotation-triggered method call by specified thread.
