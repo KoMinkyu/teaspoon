@@ -10,3 +10,10 @@ android:
 
     # Update Android SDK Tools
     - tools
+
+branches:
+  only:
+    - master
+
+script:
+ - ./gradlew clean build
