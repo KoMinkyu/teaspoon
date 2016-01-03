@@ -2,6 +2,7 @@ package com.example.teaspoon;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.View;
 import android.widget.Button;
 
@@ -29,19 +30,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
     }
 
     @OnBackground private void sleepOnBackgroundThread() {
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        SystemClock.sleep(5000);
     }
 
     @OnUi private void sleepOnUiThread() {
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        SystemClock.sleep(5000);
     }
 
     @Override public void onClick(View v) {
