@@ -1,4 +1,3 @@
-include ':teaspoon'
 include ':teaspoon-annotations'
 include ':teaspoon-processor'
 include ':teaspoon-plugin'
