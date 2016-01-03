@@ -5,7 +5,7 @@ Annotation-triggered method call by specified thread.
 * Eliminate `runOnUiThread` calls by using `@OnUi` on method.
 * Make background logic more clear by using `@OnBackground` on method.
 
-It makes more clear and easy to execute your method in `ui thread` or `background thread`.
+It makes more clear and easy to execute your method on `ui thread` or `background thread`.
 
 ``` java
 class BackgroundCallback extends Callback {
