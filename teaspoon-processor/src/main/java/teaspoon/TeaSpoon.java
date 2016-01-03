@@ -16,7 +16,7 @@ public class TeaSpoon {
     }
 
     public static void onUi(Runnable runnable) {
-        threadManager.runOnUiThread(runnable);
+        onUi(runnable, 0);
     }
 
     public static void onUi(Runnable runnable, int delay) {

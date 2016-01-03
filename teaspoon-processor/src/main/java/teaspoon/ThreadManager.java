@@ -29,10 +29,6 @@ final class ThreadManager {
         uiExecutor = new Handler(Looper.getMainLooper());
     }
 
-    public void runOnUiThread(Runnable runnable) {
-        runOnUiThread(runnable, 0);
-    }
-
     public void runOnUiThread(Runnable runnable, int delay) {
         uiExecutor.postDelayed(runnable, delay);
     }

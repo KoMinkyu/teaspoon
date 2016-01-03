@@ -1,13 +1,13 @@
 package teaspoon.processor;
 
-import android.util.Log;
-
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.reflect.MethodSignature;
 
 import teaspoon.TeaSpoon;
+import teaspoon.annotations.OnUi;
 
 @Aspect
 public class TeaSpoonProcessor {
@@ -20,15 +20,13 @@ public class TeaSpoonProcessor {
     public void methodWithOnUiAnnotation() { }
 
     @Around("methodWithOnBackgroundAnnotation()")
-    public void executeOnBackground(final ProceedingJoinPoint joinPoint) throws Throwable {
-        Log.i(TAG, joinPoint.getSignature().getName() + "execute on background thread.");
+    public void executeOnBackground(final ProceedingJoinPoint joinPoint) throws Exception{
         TeaSpoon.onBackground(new Runnable() {
-            @Override
-            public void run() {
+            @Override public void run() {
                 try {
                     joinPoint.proceed();
                 } catch (Throwable throwable) {
-                    throwable.printStackTrace();
+                    throw new IllegalStateException(throwable);
                 }
             }
         });
@@ -36,16 +34,19 @@ public class TeaSpoonProcessor {
 
     @Around("methodWithOnUiAnnotation()")
     public void methodWithOnUiAnnotation(final ProceedingJoinPoint joinPoint) throws Throwable {
-        Log.i(TAG, joinPoint.getSignature().getName() + "execute on ui thread.");
-        TeaSpoon.onUi(new Runnable() {
-            @Override
-            public void run() {
+        Runnable runnableJoinPoint = new Runnable() {
+            @Override public void run() {
                 try {
                     joinPoint.proceed();
                 } catch (Throwable throwable) {
-                    throwable.printStackTrace();
+                    throw new IllegalStateException(throwable);
                 }
             }
-        });
+        };
+
+        MethodSignature targetMethodSignature = (MethodSignature) joinPoint.getSignature();
+        OnUi annotation = targetMethodSignature.getMethod().getAnnotation(OnUi.class);
+
+        TeaSpoon.onUi(runnableJoinPoint, annotation.delay());
     }
 }
