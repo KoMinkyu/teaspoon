@@ -1,7 +1,7 @@
 TeaSpoon
 ========
 
-[![jitpack](https://img.shields.io/badge/jitpack%20maven-v0.3.0-blue.svg)](https://img.shields.io/badge/jitpack%20maven-0.3.0-blue.svg)
+[![jitpack](https://img.shields.io/badge/jitpack%20maven-v0.3.3-blue.svg)](https://img.shields.io/badge/jitpack%20maven-0.3.3-blue.svg)
 [![license](https://img.shields.io/hexpm/l/plug.svg)](LICENSE)
 [![productiveLevel](https://img.shields.io/badge/productiveLevel-non--productive-red.svg)](https://img.shields.io/badge/productiveLevel-non--productive-red.svg)
 
@@ -74,7 +74,7 @@ buildscript {
   }
 
   dependencies {
-    classpath 'me.minkyu.TeaSpoon:teaspoon-plugin:0.3.1'
+    classpath 'me.minkyu.TeaSpoon:teaspoon-plugin:0.3.3'
   }
 }
 
