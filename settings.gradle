@@ -1,5 +1,3 @@
 include ':teaspoon-annotations'
 include ':teaspoon-processor'
 include ':teaspoon-plugin'
-
-rootProject.name = 'teaspoon-parent'
