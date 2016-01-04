@@ -31,9 +31,9 @@ class TeaSpoonPlugin implements Plugin<Project> {
         }
 
         project.dependencies {
-            compile 'me.minkyu.TeaSpoon:teaspoon-processor:0.3.1'
+            compile 'me.minkyu.TeaSpoon:teaspoon-processor:0.3.2'
             compile 'org.aspectj:aspectjrt:1.8.6'
-            compile 'me.minkyu.TeaSpoon:teaspoon-annotations:0.3.1'
+            compile 'me.minkyu.TeaSpoon:teaspoon-annotations:0.3.2'
         }
 
         variants.all { variant ->
