@@ -1,7 +1,7 @@
 TeaSpoon
 ========
 
-[![jitpack](https://img.shields.io/badge/jitpack%20maven-v0.2.1-blue.svg)](https://img.shields.io/badge/jitpack%20maven-0.2.1-blue.svg)
+[![jitpack](https://img.shields.io/badge/jitpack%20maven-v0.3.0-blue.svg)](https://img.shields.io/badge/jitpack%20maven-0.3.0-blue.svg)
 [![license](https://img.shields.io/hexpm/l/plug.svg)](LICENSE)
 [![productiveLevel](https://img.shields.io/badge/productiveLevel-non--productive-red.svg)](https://img.shields.io/badge/productiveLevel-non--productive-red.svg)
 
@@ -15,28 +15,51 @@ Annotation-triggered method call by specified thread.
 
 It makes more clear and easy to execute your method on `ui thread` or `background thread`.
 
+Usage
+=====
+You've seen this code at least once.
+
 ``` java
-class BackgroundCallback extends Callback {
-	@Override public void success(Object object, Response response) {
-		showSuccessView();
+void someUiLogicInActivity() {
+	this.runOnUiThread(new Runnable() {
+		@Override public void run() {
+			// UI Thread required works here.
+		}
+	});
+}
+```
+
+Using TeaSpoon, you can implement `UI Thread` required functions like this.
+
+```java
+@OnUi void someUiLogic() {
+	// UI Thread required works here.
+}
+```
+
+or you can add delay option.
+
+``` java
+@OnUi(delay = 1000) void someUiLogicDelayed() {
+	// UI Thread required works here.
+}
+```
+
+even you can implement `Background Thread` required functions.
+
+``` java
+@OnBackground void someBackgroundLogic() {
+	// Background Thread required works here.
+}
+```
+
+before using this annotations, just add this single line of code in your Application class.
+
+``` java
+public class YourApplication exstends Application {
+	@Override public void onCreate() {
+		TeaSpoon.initialize();
 	}
-
-	@Override public void failure(RetrofitError error) {
-		showFailureView();
-		saveLogOnDevice();
-	}
-}
-
-@OnUi public void showSuccessView() {
-	successView.setVisibility(View.VISIBLE);
-}
-
-@OnUi public void showFailureView() {
-	failureView.setVisibility(View.VISIBLE);
-}
-
-@OnBackground public void saveLogOnDevice() {
-	// File IO or some background thread required work
 }
 ```
 
@@ -51,7 +74,7 @@ buildscript {
   }
 
   dependencies {
-    classpath 'com.github.KoMinkyu.TeaSpoon:teaspoon-plugin:0.2.1'
+    classpath 'me.minkyu.TeaSpoon:teaspoon-plugin:0.3.1'
   }
 }
 
