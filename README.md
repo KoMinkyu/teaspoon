@@ -74,7 +74,7 @@ buildscript {
   }
 
   dependencies {
-    classpath 'com.github.KoMinkyu.TeaSpoon:teaspoon-plugin:0.3.0'
+    classpath 'me.minkyu.TeaSpoon:teaspoon-plugin:0.3.1'
   }
 }
 
