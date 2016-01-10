@@ -1,29 +1,125 @@
 package teaspoon;
 
+import android.util.Log;
+
 /**
- * Created by minkyu on 2015. 12. 29..
+ * Singleton class for execute task in Ui thread or Background thread.
+ * This class must be initialized with {@link #initialize()} method before using other functions.
  */
 public class TeaSpoon {
-    private static final String EXCEPTION_NOT_INITIALIZED = "TeaSpoon is not initialized.";
-    private static final String EXCEPTION_ALREADY_INITIALIZED = "You cannot initialize TeaSpoon twice.";
+    private static final String TAG = TeaSpoon.class.getSimpleName();
 
-    private TeaSpoon() {}
+    private static final String ERROR_NOT_INITIALIZED = "TeaSpoon is not initialized.";
+    private static final String WARNING_ALREADY_INITIALIZED = "TeaSpoon is already initialized before.";
 
-    private static ThreadManager threadManager;
+    private boolean isInitialized = false;
 
-    public static void initialize() {
-        threadManager = ThreadManager.getInstance();
+    private ExecuteEngine executeEngine;
+
+    private volatile static TeaSpoon instance;
+
+    /** Returns singleton class instance. */
+    public static TeaSpoon getInstance() {
+        if (instance == null) {
+            synchronized (TeaSpoon.class) {
+                if (instance ==null) {
+                    instance = new TeaSpoon();
+                }
+            }
+        }
+
+        return instance;
     }
 
-    public static void onUi(Runnable runnable) {
+    protected TeaSpoon() {}
+
+    /**
+     * Initialize TeaSpoon instance.
+     * If instance initialized before, then this method will log warning message.
+     */
+    public synchronized void initialize() {
+        if (isInitialized) {
+            Log.w(TAG, WARNING_ALREADY_INITIALIZED);
+        } else {
+            executeEngine = ExecuteEngine.getInstance();
+            isInitialized = true;
+        }
+    }
+
+    /** Returns true - if TeaSpoon {@linkplain #initialize() is initialized}; false - otherwise */
+    public boolean isInitialized() {
+        return isInitialized;
+    }
+
+    /**
+     * Run runnable on Ui thread.
+     * {@link #initialize()} method must be called before call this method.
+     *
+     * @param runnable Runnable instance that will be executed on Ui thread.
+     * @throws IllegalStateException if {@link #initialize()} method wasn't called before
+     * @throws IllegalArgumentException if passed runnable argument is null
+     */
+    public synchronized void onUi(Runnable runnable) {
         onUi(runnable, 0);
     }
 
-    public static void onUi(Runnable runnable, int delay) {
-        threadManager.runOnUiThread(runnable, delay);
+    /**
+     * Run runnable on Ui thread.
+     * {@link #initialize()} method must be called before call this method.
+     *
+     * @param runnable Runnable instance that will be executed on Ui thread.
+     * @param delay is amount of time that runnable will be elapsed.
+     * @throws IllegalStateException if {@link #initialize()} method wasn't called before
+     * @throws IllegalArgumentException if passed runnable or delay argument is null
+     */
+    public synchronized void onUi(Runnable runnable, int delay) {
+        checkInitialized();
+        if (runnable == null || delay < 0 ) {
+            StringBuilder builder = new StringBuilder("Wrong arguments were passed to onUi")
+                    .append(" method with:");
+            if (runnable == null) {
+                builder.append("\nNull runnable");
+            }
+
+            if (delay < 0) {
+                builder.append("\nOut ranged delay");
+            }
+
+            throw new IllegalArgumentException(builder.toString());
+        }
+
+        executeEngine.runOnUiThread(runnable, delay);
     }
 
-    public static void onBackground(Runnable runnable) {
-        threadManager.runOnBackgroundThread(runnable);
+    /**
+     * Run runnable on Background thread.
+     * {@link #initialize()} method must be called before call this method.
+     *
+     * @param runnable Runnable instance that will be executed on Background thread.
+     * @throws IllegalStateException if {@link #initialize()} method wasn't called before
+     * @throws IllegalArgumentException if passed runnable or delay argument is null
+     */
+    public synchronized void onBackground(Runnable runnable) {
+        checkInitialized();
+        if (runnable == null) {
+            StringBuilder builder = new StringBuilder("Wrong arguments were passed to onBackground")
+                    .append(" method with:")
+                    .append("\nNull runnable");
+
+            throw new IllegalArgumentException(builder.toString());
+        }
+
+        executeEngine.runOnBackgroundThread(runnable);
+    }
+
+    /**
+     * Checks if TeaSpoon class instance was initialized
+     *
+     * @throws IllegalStateException if instance wasn't initialized
+     */
+    private void checkInitialized() {
+        if (!isInitialized) {
+            throw new IllegalStateException(ERROR_NOT_INITIALIZED);
+        }
     }
 }

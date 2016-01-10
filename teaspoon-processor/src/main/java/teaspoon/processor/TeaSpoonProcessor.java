@@ -21,7 +21,7 @@ public class TeaSpoonProcessor {
 
     @Around("methodWithOnBackgroundAnnotation()")
     public void executeOnBackground(final ProceedingJoinPoint joinPoint) throws Exception{
-        TeaSpoon.onBackground(new Runnable() {
+        TeaSpoon.getInstance().onBackground(new Runnable() {
             @Override public void run() {
                 try {
                     joinPoint.proceed();
@@ -47,6 +47,6 @@ public class TeaSpoonProcessor {
         MethodSignature targetMethodSignature = (MethodSignature) joinPoint.getSignature();
         OnUi annotation = targetMethodSignature.getMethod().getAnnotation(OnUi.class);
 
-        TeaSpoon.onUi(runnableJoinPoint, annotation.delay());
+        TeaSpoon.getInstance().onUi(runnableJoinPoint, annotation.delay());
     }
 }

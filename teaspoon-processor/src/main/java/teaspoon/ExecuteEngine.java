@@ -6,14 +6,14 @@ import android.os.Looper;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-final class ThreadManager {
-    private static teaspoon.ThreadManager instance;
+final class ExecuteEngine {
+    private static ExecuteEngine instance;
 
-    public static teaspoon.ThreadManager getInstance() {
+    public static ExecuteEngine getInstance() {
         if (instance == null) {
-            synchronized (teaspoon.ThreadManager.class) {
+            synchronized (ExecuteEngine.class) {
                 if (instance == null) {
-                    instance = new teaspoon.ThreadManager();
+                    instance = new ExecuteEngine();
                 }
             }
         }
@@ -24,7 +24,7 @@ final class ThreadManager {
     private final ExecutorService threadExecutor;
     private final Handler uiExecutor;
 
-    ThreadManager() {
+    ExecuteEngine() {
         threadExecutor = Executors.newCachedThreadPool();
         uiExecutor = new Handler(Looper.getMainLooper());
     }
