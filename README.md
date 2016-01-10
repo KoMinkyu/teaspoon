@@ -3,9 +3,9 @@ TeaSpoon
 
 [![jitpack](https://img.shields.io/badge/jitpack%20maven-v0.3.3-blue.svg)](https://img.shields.io/badge/jitpack%20maven-0.3.3-blue.svg)
 [![license](https://img.shields.io/hexpm/l/plug.svg)](LICENSE)
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-TeaSpoon-blue.svg?style=flat)](http://android-arsenal.com/details/1/2997)
 
 [![travis](https://api.travis-ci.org/KoMinkyu/teaspoon.svg)](https://travis-ci.org/KoMinkyu/teaspoon)
-[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-TeaSpoon-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/2997)
 
 Annotation-triggered method call by specified thread.
 * Eliminate `runOnUiThread` calls by using `@OnUi` on method.
