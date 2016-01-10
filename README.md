@@ -4,7 +4,7 @@ TeaSpoon
 [![jitpack](https://img.shields.io/badge/jitpack%20maven-v0.3.3-blue.svg)](https://img.shields.io/badge/jitpack%20maven-0.3.3-blue.svg)
 [![license](https://img.shields.io/hexpm/l/plug.svg)](LICENSE)
 
-[![travis](https://api.travis-ci.org/KoMinkyu/TeaSpoon.svg)](https://travis-ci.org/KoMinkyu/TeaSpoon)
+[![travis](https://api.travis-ci.org/KoMinkyu/teaspoon.svg)](https://travis-ci.org/KoMinkyu/teaspoon)
 
 Annotation-triggered method call by specified thread.
 * Eliminate `runOnUiThread` calls by using `@OnUi` on method.
