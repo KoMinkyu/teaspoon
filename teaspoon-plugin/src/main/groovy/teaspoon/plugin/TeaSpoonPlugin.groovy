@@ -26,15 +26,11 @@ class TeaSpoonPlugin implements Plugin<Project> {
             variants = project.android.libraryVariants
         }
 
-        project.repositories {
-            maven { url "https://jitpack.io" }
-        }
-
         project.dependencies {
-            debugCompile 'me.minkyu.teaspoon:teaspoon-processor:-SNAPSHOT'
-            debugCompile 'org.aspectj:aspectjrt:1.8.6'
+            compile 'me.minkyu.teaspoon:teaspoon-processor:0.3.3'
+            compile 'org.aspectj:aspectjrt:1.8.6'
 
-            compile 'me.minkyu.teaspoon:teaspoon-annotations:-SNAPSHOT'
+            compile 'me.minkyu.teaspoon:teaspoon-annotations:0.3.3'
         }
 
         variants.all { variant ->
