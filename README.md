@@ -1,7 +1,7 @@
 TeaSpoon
 ========
 
-[![jitpack](https://img.shields.io/badge/jitpack%20maven-v0.3.3-blue.svg)](https://img.shields.io/badge/jitpack%20maven-0.3.3-blue.svg)
+[![](https://jitpack.io/v/me.minkyu/teaspoon.svg)](https://jitpack.io/#me.minkyu/teaspoon)
 [![license](https://img.shields.io/hexpm/l/plug.svg)](LICENSE)
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-TeaSpoon-blue.svg?style=flat)](http://android-arsenal.com/details/1/2997)
 
