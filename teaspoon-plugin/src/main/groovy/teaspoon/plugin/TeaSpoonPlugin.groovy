@@ -31,10 +31,10 @@ class TeaSpoonPlugin implements Plugin<Project> {
         }
 
         project.dependencies {
-            debugCompile 'me.minkyu.teaspoon:teaspoon-processor:0.3.3'
+            debugCompile 'me.minkyu.teaspoon:teaspoon-processor:-SNAPSHOT'
             debugCompile 'org.aspectj:aspectjrt:1.8.6'
 
-            compile 'me.minkyu.teaspoon:teaspoon-annotations:0.3.3'
+            compile 'me.minkyu.teaspoon:teaspoon-annotations:-SNAPSHOT'
         }
 
         variants.all { variant ->
