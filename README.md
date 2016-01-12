@@ -51,6 +51,20 @@ even you can implement `Background Thread` required functions.
 }
 ```
 
+and just call these methods wherever you want!
+
+``` java
+public class MainActivity extends Activity {
+	@Override protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+
+		someBackgroundLogic(); // it will be executed on Background Thread
+		someUiLogic(); // it will be executed on Ui Thread
+		someUiLogicDelayed(); // it will be executed on Ui Thread after specified delay
+	}
+}
+```
+
 before using this annotations, just add this single line of code in your Application class.
 
 ``` java
@@ -72,12 +86,12 @@ buildscript {
   }
 
   dependencies {
-    classpath 'me.minkyu.TeaSpoon:teaspoon-plugin:0.3.3'
+    classpath 'me.minkyu.teaspoon:teaspoon-plugin:0.3.3'
   }
 }
 
 apply plugin: 'com.android.application'
-apply plugin: 'teaspoon'
+apply plugin: 'me.minkyu.teaspoon'
 ```
 
 Local Development
