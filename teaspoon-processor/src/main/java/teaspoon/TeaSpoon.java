@@ -14,7 +14,7 @@ public class TeaSpoon {
 
     private boolean isInitialized = false;
 
-    private ExecuteEngine executeEngine;
+    private ExecuteEngineFactory executeEngineFactory;
 
     private volatile static TeaSpoon instance;
 
@@ -41,7 +41,7 @@ public class TeaSpoon {
         if (isInitialized) {
             Log.w(TAG, WARNING_ALREADY_INITIALIZED);
         } else {
-            executeEngine = ExecuteEngine.getInstance();
+            executeEngineFactory = ExecuteEngineFactory.getInstance();
             isInitialized = true;
         }
     }
@@ -88,7 +88,7 @@ public class TeaSpoon {
             throw new IllegalArgumentException(builder.toString());
         }
 
-        executeEngine.runOnUiThread(runnable, delay);
+        executeEngineFactory.runOnUiThread(runnable, delay);
     }
 
     /**
@@ -109,7 +109,7 @@ public class TeaSpoon {
             throw new IllegalArgumentException(builder.toString());
         }
 
-        executeEngine.runOnBackgroundThread(runnable);
+        executeEngineFactory.runOnBackgroundThread(runnable);
     }
 
     /**
