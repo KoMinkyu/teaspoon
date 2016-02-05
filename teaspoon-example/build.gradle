@@ -2,8 +2,6 @@ buildscript {
     repositories {
         mavenCentral()
         maven { url "https://jitpack.io" }
-
-        mavenLocal()
     }
 
     dependencies {
@@ -13,15 +11,16 @@ buildscript {
 }
 
 apply plugin: 'com.android.application'
-apply plugin: 'teaspoon'
+apply plugin: 'me.minkyu.teaspoon'
+
+
+repositories {
+    mavenCentral()
+    maven { url "https://jitpack.io" }
+    mavenLocal()
+}
 
 dependencies {
-    repositories {
-        mavenCentral()
-
-        mavenLocal()
-    }
-
     compile 'com.android.support:appcompat-v7:23.1.1'
 }
 
@@ -40,11 +39,5 @@ android {
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
-    }
-
-    buildTypes {
-        dev {
-            applicationIdSuffix '.dev'
-        }
     }
 }

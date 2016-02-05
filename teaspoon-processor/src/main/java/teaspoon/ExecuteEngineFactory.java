@@ -6,14 +6,14 @@ import android.os.Looper;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-final class ExecuteEngine {
-    private static ExecuteEngine instance;
+public class ExecuteEngineFactory {
+    private static ExecuteEngineFactory instance;
 
-    public static ExecuteEngine getInstance() {
+    public static ExecuteEngineFactory getInstance() {
         if (instance == null) {
-            synchronized (ExecuteEngine.class) {
+            synchronized (ExecuteEngineFactory.class) {
                 if (instance == null) {
-                    instance = new ExecuteEngine();
+                    instance = new ExecuteEngineFactory();
                 }
             }
         }
@@ -24,7 +24,7 @@ final class ExecuteEngine {
     private final ExecutorService threadExecutor;
     private final Handler uiExecutor;
 
-    ExecuteEngine() {
+    ExecuteEngineFactory() {
         threadExecutor = Executors.newCachedThreadPool();
         uiExecutor = new Handler(Looper.getMainLooper());
     }
