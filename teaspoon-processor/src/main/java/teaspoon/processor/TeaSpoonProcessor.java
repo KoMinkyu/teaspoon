@@ -20,7 +20,7 @@ public class TeaSpoonProcessor {
     public void methodWithOnUiAnnotation() { }
 
     @Around("methodWithOnBackgroundAnnotation()")
-    public void executeOnBackground(final ProceedingJoinPoint joinPoint) throws Exception{
+    public void executeOnBackground(final ProceedingJoinPoint joinPoint) {
         TeaSpoon.getInstance().onBackground(new Runnable() {
             @Override public void run() {
                 try {
@@ -33,7 +33,7 @@ public class TeaSpoonProcessor {
     }
 
     @Around("methodWithOnUiAnnotation()")
-    public void methodWithOnUiAnnotation(final ProceedingJoinPoint joinPoint) throws Throwable {
+    public void methodWithOnUiAnnotation(final ProceedingJoinPoint joinPoint) {
         Runnable runnableJoinPoint = new Runnable() {
             @Override public void run() {
                 try {
