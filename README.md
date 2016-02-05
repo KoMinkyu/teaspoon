@@ -68,7 +68,7 @@ public class MainActivity extends Activity {
 before using this annotations, just add this single line of code in your Application class.
 
 ``` java
-public class YourApplication exstends Application {
+public class YourApplication extends Application {
 	@Override public void onCreate() {
 		TeaSpoon.initialize();
 	}
