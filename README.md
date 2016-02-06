@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/KoMinkyu/teaspoon.png?label=ready&title=Ready)](https://waffle.io/KoMinkyu/teaspoon)
 TeaSpoon
 ========
 
