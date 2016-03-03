@@ -6,12 +6,17 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 
+import java.lang.reflect.Method;
+import java.util.HashMap;
+
 import teaspoon.TeaSpoon;
 import teaspoon.annotations.OnUi;
 
 @Aspect
 public class TeaSpoonProcessor {
     private static final String TAG = TeaSpoonProcessor.class.getSimpleName();
+
+    private HashMap<Integer, Integer> processedMap = new HashMap<>();
 
     @Pointcut("execution(@teaspoon.annotations.OnBackground * *(..))")
     public void methodWithOnBackgroundAnnotation() { }
@@ -22,7 +27,8 @@ public class TeaSpoonProcessor {
     @Around("methodWithOnBackgroundAnnotation()")
     public void executeOnBackground(final ProceedingJoinPoint joinPoint) {
         TeaSpoon.getInstance().onBackground(new Runnable() {
-            @Override public void run() {
+            @Override
+            public void run() {
                 try {
                     joinPoint.proceed();
                 } catch (Throwable throwable) {
@@ -44,9 +50,32 @@ public class TeaSpoonProcessor {
             }
         };
 
-        MethodSignature targetMethodSignature = (MethodSignature) joinPoint.getSignature();
-        OnUi annotation = targetMethodSignature.getMethod().getAnnotation(OnUi.class);
+        MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
+        Method method = methodSignature.getMethod();
+        int methodHashCode = method.hashCode();
 
-        TeaSpoon.getInstance().onUi(runnableJoinPoint, annotation.delay());
+        int delay;
+
+        if (processedMap.containsKey(methodHashCode)) {
+            delay = processedMap.get(methodHashCode);
+        } else {
+            delay = processMethodAndGetDelay(method);
+            processedMap.put(methodHashCode, delay);
+        }
+
+        TeaSpoon.getInstance().onUi(runnableJoinPoint, delay);
+    }
+
+    private int processMethodAndGetDelay(final Method method) {
+        if (method == null) {
+            throw new IllegalStateException("Method cannot be null");
+        }
+
+        OnUi onUiAnnotation = method.getAnnotation(OnUi.class);
+        if (onUiAnnotation == null) {
+            throw new IllegalStateException("Can't find @OnUi annotation from method");
+        }
+
+        return onUiAnnotation.delay();
     }
 }
