@@ -1,7 +1,5 @@
 package teaspoon;
 
-import android.util.Log;
-
 /**
  * Singleton class for execute task in Ui thread or Background thread.
  * This class must be initialized with {@link #initialize()} method before using other functions.
@@ -12,9 +10,7 @@ public class TeaSpoon {
     private static final String ERROR_NOT_INITIALIZED = "TeaSpoon is not initialized.";
     private static final String WARNING_ALREADY_INITIALIZED = "TeaSpoon is already initialized before.";
 
-    private boolean isInitialized = false;
-
-    private ExecuteEngineFactory executeEngineFactory;
+    private static ExecuteEngineFactory executeEngineFactory;
 
     private volatile static TeaSpoon instance;
 
@@ -35,20 +31,9 @@ public class TeaSpoon {
 
     /**
      * Initialize TeaSpoon instance.
-     * If instance initialized before, then this method will log warning message.
      */
-    public synchronized void initialize() {
-        if (isInitialized) {
-            Log.w(TAG, WARNING_ALREADY_INITIALIZED);
-        } else {
-            executeEngineFactory = ExecuteEngineFactory.getInstance();
-            isInitialized = true;
-        }
-    }
-
-    /** Returns true - if TeaSpoon {@linkplain #initialize() is initialized}; false - otherwise */
-    public boolean isInitialized() {
-        return isInitialized;
+    public static void initialize() {
+        executeEngineFactory = ExecuteEngineFactory.getInstance();
     }
 
     /**
@@ -118,7 +103,7 @@ public class TeaSpoon {
      * @throws IllegalStateException if instance wasn't initialized
      */
     private void checkInitialized() {
-        if (!isInitialized) {
+        if (executeEngineFactory == null) {
             throw new IllegalStateException(ERROR_NOT_INITIALIZED);
         }
     }
