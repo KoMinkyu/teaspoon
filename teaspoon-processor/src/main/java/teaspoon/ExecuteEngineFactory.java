@@ -36,4 +36,8 @@ public class ExecuteEngineFactory {
     public void runOnBackgroundThread(Runnable runnable) {
         threadExecutor.submit(runnable);
     }
+
+    public ExecutorService getThreadExecutor() {
+        return threadExecutor;
+    }
 }
