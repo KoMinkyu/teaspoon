@@ -1,12 +1,13 @@
 buildscript {
     repositories {
         mavenCentral()
-        maven { url "https://jitpack.io" }
+        mavenLocal()
+//        maven { url "https://jitpack.io" }
     }
 
     dependencies {
         classpath 'com.android.tools.build:gradle:1.5.0'
-        classpath 'me.minkyu.teaspoon:teaspoon-plugin:0.3.3'
+        classpath 'me.minkyu.teaspoon:teaspoon-plugin:0.3.4'
     }
 }
 
