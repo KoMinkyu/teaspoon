@@ -32,8 +32,8 @@ ext {
 }
 
 ext.deps = [
-    aspectjrt: 'org.aspectj:aspectjrt:1.8.6',
-    aspectjtools: 'org.aspectj:aspectjtools:1.8.6',
+    aspectjrt: 'org.aspectj:aspectjrt:1.8.8',
+    aspectjtools: 'org.aspectj:aspectjtools:1.8.8',
 
     junit: 'junit:junit:4.12',
 ]
