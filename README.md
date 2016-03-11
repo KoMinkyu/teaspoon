@@ -1,10 +1,10 @@
-[![Stories in Ready](https://badge.waffle.io/KoMinkyu/teaspoon.png?label=ready&title=Ready)](https://waffle.io/KoMinkyu/teaspoon)
 TeaSpoon
 ========
 
 [![](https://jitpack.io/v/me.minkyu/teaspoon.svg)](https://jitpack.io/#me.minkyu/teaspoon)
 [![license](https://img.shields.io/hexpm/l/plug.svg)](LICENSE)
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-TeaSpoon-blue.svg?style=flat)](http://android-arsenal.com/details/1/2997)
+[![Stories in Ready](https://badge.waffle.io/KoMinkyu/teaspoon.png?label=ready&title=Ready)](https://waffle.io/KoMinkyu/teaspoon)
 
 [![travis](https://api.travis-ci.org/KoMinkyu/teaspoon.svg)](https://travis-ci.org/KoMinkyu/teaspoon)
 
