@@ -1,5 +1,7 @@
 package teaspoon;
 
+import java.util.concurrent.ExecutorService;
+
 /**
  * Singleton class for execute task in Ui thread or Background thread.
  * This class must be initialized with {@link #initialize()} method before using other functions.
@@ -7,10 +9,12 @@ package teaspoon;
 public class TeaSpoon {
     private static final String TAG = TeaSpoon.class.getSimpleName();
 
-    private static final String ERROR_NOT_INITIALIZED = "TeaSpoon is not initialized.";
-    private static final String WARNING_ALREADY_INITIALIZED = "TeaSpoon is already initialized before.";
+    private static final String ERROR_NOT_INITIALIZED =
+            "TeaSpoon is not initialized.";
+    private static final String WARNING_ALREADY_INITIALIZED =
+            "TeaSpoon is already initialized before.";
 
-    private static ExecuteEngineFactory executeEngineFactory;
+    private static ExecuteEngine executeEngine;
 
     private volatile static TeaSpoon instance;
 
@@ -33,7 +37,23 @@ public class TeaSpoon {
      * Initialize TeaSpoon instance.
      */
     public static void initialize() {
-        executeEngineFactory = ExecuteEngineFactory.getInstance();
+        checkTeaSpoonInstance();
+        executeEngine = new ExecuteEngine();
+    }
+
+	/**
+	 * Initialize TeaSpoon instance.
+     * @param executorService
+     */
+    public static void initialize(final ExecutorService executorService) {
+        checkTeaSpoonInstance();
+        executeEngine = new ExecuteEngine(executorService);
+    }
+
+    private static void checkTeaSpoonInstance() {
+        if (executeEngine != null) {
+            throw new IllegalStateException(WARNING_ALREADY_INITIALIZED);
+        }
     }
 
     /**
@@ -73,7 +93,7 @@ public class TeaSpoon {
             throw new IllegalArgumentException(builder.toString());
         }
 
-        executeEngineFactory.runOnUiThread(runnable, delay);
+        executeEngine.runOnUiThread(runnable, delay);
     }
 
     /**
@@ -94,7 +114,7 @@ public class TeaSpoon {
             throw new IllegalArgumentException(builder.toString());
         }
 
-        executeEngineFactory.runOnBackgroundThread(runnable);
+        executeEngine.runOnBackgroundThread(runnable);
     }
 
     /**
@@ -103,7 +123,7 @@ public class TeaSpoon {
      * @throws IllegalStateException if instance wasn't initialized
      */
     private void checkInitialized() {
-        if (executeEngineFactory == null) {
+        if (executeEngine == null) {
             throw new IllegalStateException(ERROR_NOT_INITIALIZED);
         }
     }
