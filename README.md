@@ -20,11 +20,11 @@ You've seen this code at least once.
 
 ``` java
 void someUiLogicInActivity() {
-	this.runOnUiThread(new Runnable() {
-		@Override public void run() {
-			// UI Thread required works here.
-		}
-	});
+  this.runOnUiThread(new Runnable() {
+    @Override public void run() {
+      // UI Thread required works here.
+    }
+  });
 }
 ```
 
@@ -32,7 +32,7 @@ Using TeaSpoon, you can implement `UI Thread` required functions like this.
 
 ```java
 @OnUi void someUiLogic() {
-	// UI Thread required works here.
+  // UI Thread required works here.
 }
 ```
 
@@ -40,7 +40,7 @@ or you can add delay option.
 
 ``` java
 @OnUi(delay = 1000) void someUiLogicDelayed() {
-	// UI Thread required works here.
+  // UI Thread required works here.
 }
 ```
 
@@ -48,7 +48,7 @@ even you can implement `Background Thread` required functions.
 
 ``` java
 @OnBackground void someBackgroundLogic() {
-	// Background Thread required works here.
+  // Background Thread required works here.
 }
 ```
 
@@ -56,13 +56,12 @@ and just call these methods wherever you want!
 
 ``` java
 public class MainActivity extends Activity {
-	@Override protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-
-		someBackgroundLogic(); // it will be executed on Background Thread
-		someUiLogic(); // it will be executed on Ui Thread
-		someUiLogicDelayed(); // it will be executed on Ui Thread after specified delay
-	}
+  @Override protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    someBackgroundLogic(); // it will be executed on Background Thread
+    someUiLogic(); // it will be executed on Ui Thread
+    someUiLogicDelayed(); // it will be executed on Ui Thread after specified delay
+  }
 }
 ```
 
@@ -70,9 +69,9 @@ before using this annotations, just add this single line of code in your Applica
 
 ``` java
 public class YourApplication extends Application {
-	@Override public void onCreate() {
-		TeaSpoon.initialize();
-	}
+  @Override public void onCreate() {
+    TeaSpoon.initialize();
+  }
 }
 ```
 
