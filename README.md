@@ -92,6 +92,10 @@ buildscript {
 
 apply plugin: 'com.android.application'
 apply plugin: 'me.minkyu.teaspoon'
+
+repositories {
+  maven { url "https://jitpack.io" }
+}
 ```
 
 Local Development
