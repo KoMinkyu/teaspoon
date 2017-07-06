@@ -7,7 +7,7 @@ buildscript {
 
     dependencies {
         classpath 'com.android.tools.build:gradle:1.5.0'
-        classpath 'me.minkyu.teaspoon:teaspoon-plugin:0.3.4'
+        classpath 'com.github.KoMinkyu.teaspoon:teaspoon-plugin:0.3.5'
     }
 }
 
